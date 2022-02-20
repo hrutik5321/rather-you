@@ -64,16 +64,18 @@ function Login() {
           className="w-72 bg-blue-500 mt-4 py-2 text-white"
           onClick={async (e) => {
             e.preventDefault();
-            new Promise((res, rej) => {
-              setLoading(true);
-              setTimeout(() => res(), 500);
-            }).then(async () => {
-              await dispatch(loginUser(selectedUser));
-              if (selectedUser) {
-                setLoading(false);
-                navigate("/");
-              }
-            });
+            if (selectedUser) {
+              new Promise((res, rej) => {
+                setLoading(true);
+                setTimeout(() => res(), 500);
+              }).then(async () => {
+                await dispatch(loginUser(selectedUser));
+                if (selectedUser) {
+                  setLoading(false);
+                  navigate("/");
+                }
+              });
+            }
           }}
         >
           Login
