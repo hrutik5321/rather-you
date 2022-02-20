@@ -40,7 +40,7 @@ function NavBar() {
             Home
           </NavLink>
           <NavLink
-            to="/lead"
+            to="/leaderboard"
             className={(navData) =>
               navData.isActive
                 ? "py-3 px-2 border-blue-500 border-b cursor-pointer text-blue-600"

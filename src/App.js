@@ -38,7 +38,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/question/:quesId" element={<AnswerPoll />} />
             <Route path="/add" element={<AddQuestion />} />
-            <Route path="/lead" element={<LeadBoard />} />
+            <Route path="/leaderboard" element={<LeadBoard />} />
           </>
         )}
         <Route path="/login" element={<Login />} />
