@@ -100,8 +100,9 @@ function AnswerPoll() {
                     dispatch(
                       addAnswerToUser(auth, fetchAuthor().que.id, option)
                     );
-                    navigate("/");
-                    console.log("Send Navigate");
+                    // navigate("/");
+                    isAnswered();
+                    // console.log("Send Navigate");
                   }}
                 >
                   Answer
