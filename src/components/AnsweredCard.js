@@ -8,9 +8,12 @@ function AnsweredCard({ answers, isPending }) {
   return (
     <>
       {answers.length
-        ? answers.map((ans) => {
+        ? answers.map((ans, i) => {
             return (
-              <div className="mt-4 w-full border shadow-md bg-white rounded-md">
+              <div
+                className="mt-4 w-full border shadow-md bg-white rounded-md"
+                key={i}
+              >
                 <div className="w-full h-36 bg-gray-800 relative rounded-tl-md rounded-tr-md">
                   <p className="text-white font-medium text-lg text-center pt-8 capitalize">
                     {ans.author}

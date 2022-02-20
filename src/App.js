@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect } from "react";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import { BrowserRouter } from "react-router-dom";
@@ -12,8 +12,6 @@ import AddQuestion from "./components/AddQuestion";
 import LeadBoard from "./components/LeadBoard";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -26,7 +24,7 @@ function App() {
 
   useEffect(() => {
     fetchQuestions();
-  }, []);
+  });
 
   // useEffect(() => {
   //   console.log(auth.id);

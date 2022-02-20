@@ -3,7 +3,6 @@ import NavBar from "./NavBar";
 import { useSelector } from "react-redux";
 
 function LeadBoard() {
-  const auth = useSelector((state) => state.auth);
   const users = useSelector((state) => state.users);
   const [data, setData] = useState(null);
 
@@ -19,14 +18,13 @@ function LeadBoard() {
       }))
       .sort((a, b) => a.total - b.total)
       .reverse();
-    // .slice(0, 3);
     console.log(leaderboardData);
     setData(leaderboardData);
   };
 
   useEffect(() => {
     fetchLeadboard();
-  }, []);
+  });
 
   return (
     <>
@@ -48,9 +46,9 @@ function LeadBoard() {
               </th>
             </tr>
             {data &&
-              data.map((user) => {
+              data.map((user, i) => {
                 return (
-                  <tr className="table__data">
+                  <tr className="table__data" key={i}>
                     <td className="text-center">
                       <span className="py-1 px-2 bg-yellow-400 text-white w-min rounded-sm text-center">
                         {user.total}

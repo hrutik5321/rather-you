@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import NavBar from "./NavBar";
-import { useNavigate } from "react-router-dom";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
 import AnsweredCard from "./AnsweredCard";
-import AnswerPoll from "./AnswerPoll";
-import { useDispatch } from "react-redux";
 
 function Home() {
   const auth = useSelector((state) => state.auth);
   const users = useSelector((state) => state.users);
   const questions = useSelector((state) => state.question);
   const [activeBtn, setActiveBtn] = useState("unans");
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [answers, setAnswers] = useState([]);
   const [unAnswers, setUnAnswers] = useState([]);
 
@@ -31,14 +25,12 @@ function Home() {
 
       setAnswers(unanswered);
       setUnAnswers(answered);
-      console.log(unanswered);
-      // console.log(unanswered);
     }
   };
 
   useEffect(() => {
     answerDatas();
-  }, [dispatch]);
+  });
 
   return (
     <div className=" bg-slate-100 h-screen">

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getInitialData } from "../utils/api";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginUser } from "../store/actions";
 import { useNavigate } from "react-router-dom";
 import ReactLoading from "react-loading";
@@ -10,7 +9,6 @@ function Login() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedUser, setSelectedUser] = useState("");
-  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

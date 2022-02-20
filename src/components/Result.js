@@ -1,7 +1,6 @@
 import React from "react";
 
 function Result({ data }) {
-  console.log(data);
   return (
     <>
       <div className="mt-4 flex justify-between">

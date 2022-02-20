@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavBar from "./NavBar";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,13 +19,6 @@ function AnswerPoll() {
   const fetchAuthor = () => {
     const que = question[quesId];
     const author = users[que.author];
-
-    const optionOneVotes = que.optionOne.votes.length;
-    const optionTwoVotes = que.optionTwo.votes.length;
-    const votesTotal = optionOneVotes + optionTwoVotes;
-    const user = users[auth];
-    const userVote = user.answers[que.id];
-    console.log(userVote);
     return {
       que,
       author,
@@ -89,11 +82,6 @@ function AnswerPoll() {
               <p className="text-2xl text-gray-700 font-medium">
                 Would You Rather
               </p>
-              {/* {!isAnswered() && (
-                <p className="text-center text-lg font-medium text-gray-600">
-                  Choose one option
-                </p>
-              )} */}
               {!isAnswered() && (
                 <Question
                   optionHandler={optionChangeHandler}
