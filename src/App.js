@@ -13,6 +13,9 @@ import LeadBoard from "./components/LeadBoard";
 
 function App() {
   const auth = useSelector((state) => state.auth);
+  const users = useSelector((state) => state.users);
+  const questions = useSelector((state) => state.questions);
+
   const dispatch = useDispatch();
 
   const fetchQuestions = () => {
@@ -23,8 +26,10 @@ function App() {
   };
 
   useEffect(() => {
-    fetchQuestions();
-  });
+    if (users !== null || questions !== null) {
+      fetchQuestions();
+    }
+  }, []);
 
   // useEffect(() => {
   //   console.log(auth.id);
