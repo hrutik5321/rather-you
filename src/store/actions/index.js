@@ -1,5 +1,6 @@
 import { saveQuestion } from "../../utils/api";
 
+// AUTH ACTIONS
 export const loginUser = (id) => {
   return {
     type: "LOGIN_USER",
@@ -7,16 +8,11 @@ export const loginUser = (id) => {
   };
 };
 
+// QUESTION ACTIONS
 export const receiveQuestions = (questions) => {
   return {
     type: "RECEIVED_QUESTIONS",
     data: questions,
-  };
-};
-export const receiveUsers = (users) => {
-  return {
-    type: "RECEIVED_USERS",
-    data: users,
   };
 };
 
@@ -29,19 +25,27 @@ export function addAnswerToQuestion(authUser, qid, answer) {
   };
 }
 
+function addQuestion(question) {
+  return {
+    type: "ADD_QUESTION",
+    question,
+  };
+}
+
+// USER ACTIONS
+export const receiveUsers = (users) => {
+  return {
+    type: "RECEIVED_USERS",
+    data: users,
+  };
+};
+
 export function addAnswerToUser(authUser, qid, answer) {
   return {
     type: "ADD_ANSWER_TO_USER",
     authUser,
     qid,
     answer,
-  };
-}
-
-function addQuestion(question) {
-  return {
-    type: "ADD_QUESTION",
-    question,
   };
 }
 

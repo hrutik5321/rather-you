@@ -18,13 +18,12 @@ function LeadBoard() {
       }))
       .sort((a, b) => a.total - b.total)
       .reverse();
-    console.log(leaderboardData);
     setData(leaderboardData);
   };
 
   useEffect(() => {
     fetchLeadboard();
-  });
+  }, []);
 
   return (
     <>
@@ -32,37 +31,42 @@ function LeadBoard() {
       <div className="w-full h-screen flex justify-center">
         <div className="main_container w-full h-32 mt-12">
           <table className="border p-5">
-            <tr className="pl-2">
-              <p className="pl-2 py-4">Leadboard</p>
-            </tr>
-            <tr>
-              <th className="text-gray-400 font-normal text-center">Score</th>
-              <th className="text-gray-400 font-normal text-left">User</th>
-              <th className="text-gray-400 font-normal text-center">
-                Answered Questions
-              </th>
-              <th className="text-gray-400 font-normal text-center">
-                Created Questions
-              </th>
-            </tr>
-            {data &&
-              data.map((user, i) => {
-                return (
-                  <tr className="table__data" key={i}>
-                    <td className="text-center">
-                      <span className="py-1 px-2 bg-yellow-400 text-white w-min rounded-sm text-center">
-                        {user.total}
-                      </span>
-                    </td>
-                    <td className="flex gap-2">
-                      <img src={user.avatarURL} alt="" className="w-6 h-6" />{" "}
-                      {user.name}
-                    </td>
-                    <td className="text-center">{user.answerCount}</td>
-                    <td className="text-center">{user.questionCount}</td>
-                  </tr>
-                );
-              })}
+            <thead>
+              <tr className="pl-2">
+                <td className="pl-2 py-4">Leadboard</td>
+              </tr>
+              <tr>
+                <th className="text-gray-400 font-normal text-center">Score</th>
+                <th className="text-gray-400 font-normal text-left">User</th>
+                <th className="text-gray-400 font-normal text-center">
+                  Answered Questions
+                </th>
+                <th className="text-gray-400 font-normal text-center">
+                  Created Questions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {data &&
+                data.map((user, i) => {
+                  return (
+                    <tr className="table__data" key={i}>
+                      <td className="text-center">
+                        <span className="py-1 px-2 bg-yellow-400 text-white w-min rounded-sm text-center">
+                          {user.total}
+                        </span>
+                      </td>
+                      <td className="flex gap-2">
+                        <img src={user.avatarURL} alt="" className="w-6 h-6" />{" "}
+                        {user.name}
+                      </td>
+                      <td className="text-center">{user.answerCount}</td>
+                      <td className="text-center">{user.questionCount}</td>
+                    </tr>
+                  );
+                })}
+            </tbody>
           </table>
         </div>
       </div>

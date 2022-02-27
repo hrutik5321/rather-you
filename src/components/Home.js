@@ -30,7 +30,7 @@ function Home() {
 
   useEffect(() => {
     answerDatas();
-  });
+  }, []);
 
   return (
     <div className=" bg-slate-100 h-screen">
@@ -62,8 +62,6 @@ function Home() {
           {activeBtn === "unans" && (
             <AnsweredCard answers={unAnswers} isPending={true} />
           )}
-
-          {/* </BrowserRouter> */}
         </div>
       </div>
     </div>

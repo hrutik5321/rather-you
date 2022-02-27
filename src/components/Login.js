@@ -11,19 +11,25 @@ function Login() {
   const [selectedUser, setSelectedUser] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // const location = useLocation();
+
+  // const location = useLocation();
+  // const prevLocation = usePrevLocation(location);
 
   useEffect(() => {
     setLoading(true);
     const fetchUsers = async () => {
       await getInitialData().then((res) => {
         setUsers(res.users);
-        console.log(res);
         setLoading(false);
       });
       setLoading(false);
     };
     setLoading(false);
     fetchUsers();
+    // if (auth) {
+    //   gotoHomePage();
+    // }
   }, []);
 
   return loading ? (
@@ -72,7 +78,7 @@ function Login() {
                 await dispatch(loginUser(selectedUser));
                 if (selectedUser) {
                   setLoading(false);
-                  navigate("/");
+                  navigate(-1);
                 }
               });
             }
@@ -80,17 +86,6 @@ function Login() {
         >
           Login
         </button>
-        {/* <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-          <div
-            className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
-            style={{
-              width: "45%",
-            }}
-          >
-            {" "}
-            45%
-          </div>
-        </div> */}
       </div>
     </div>
   );

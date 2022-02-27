@@ -18,9 +18,10 @@ function AddQuestion() {
     setLoading(true);
     e.preventDefault();
     await dispatch(handleSaveQuestion(option1, option2, auth));
-    navigate("/");
     setLoading(false);
-    // console.log(option1 + " " + option2 + " " + auth);
+    setOption1("");
+    setOption2("");
+    navigate("/");
   };
 
   const btnActive = () => {
@@ -30,6 +31,7 @@ function AddQuestion() {
       return false;
     }
   };
+
   return (
     <>
       <NavBar />

@@ -10,6 +10,7 @@ import { getInitialData } from "./utils/api";
 import AnswerPoll from "./components/AnswerPoll";
 import AddQuestion from "./components/AddQuestion";
 import LeadBoard from "./components/LeadBoard";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const auth = useSelector((state) => state.auth);
@@ -31,23 +32,29 @@ function App() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   console.log(auth.id);
-  // }, []);
   return (
     <BrowserRouter>
       <Routes>
-        {auth && (
+        {auth ? (
           <>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/question/:quesId" element={<AnswerPoll />} />
             <Route path="/add" element={<AddQuestion />} />
             <Route path="/leaderboard" element={<LeadBoard />} />
+            <Route path="/leaderboard" element={<LeadBoard />} />
           </>
+        ) : (
+          <Route path="/login" element={<Login />} />
         )}
+        {/* {!auth && } */}
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<Navigate to="/login" />} />
+
+        <Route
+          path="*"
+          element={auth ? <ErrorPage /> : <Navigate to="/login" />}
+        />
+        {/* <Route path="/error" element={} /> */}
       </Routes>
     </BrowserRouter>
   );
